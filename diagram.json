@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "author": "Ekieoniso Roman",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-st-nucleo-c031c6",
+      "id": "nucleo",
+      "top": 39.23,
+      "left": -212.18,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "servo1",
+      "top": 324.4,
+      "left": 86.4,
+      "attrs": { "hornColor": "white" }
+    },
+    {
+      "type": "wokwi-membrane-keypad",
+      "id": "keypad1",
+      "top": -174.8,
+      "left": -503.2,
+      "attrs": { "columns": "3" }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 131.2,
+      "left": 149.6,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -26.4,
+      "left": 69,
+      "attrs": { "volume": "0.06" }
+    }
+  ],
+  "connections": [
+    [ "$serialMonitor:TX", "nucleo:PA3", "", [] ],
+    [ "$serialMonitor:RX", "nucleo:PA2", "", [] ],
+    [ "nucleo:GND.5", "bz1:1", "black", [ "h0" ] ],
+    [ "lcd1:GND", "nucleo:GND.5", "black", [ "h0" ] ],
+    [ "bz1:2", "nucleo:PB4", "green", [ "v0" ] ],
+    [ "servo1:GND", "nucleo:GND.5", "black", [ "h0" ] ],
+    [ "keypad1:C1", "nucleo:A0", "orange", [ "v0" ] ],
+    [ "keypad1:C2", "nucleo:A1", "blue", [ "v0" ] ],
+    [ "keypad1:C4", "nucleo:A4", "yellow", [ "v0" ] ],
+    [ "nucleo:PA5", "keypad1:R4", "green", [ "h0" ] ],
+    [ "keypad1:R3", "nucleo:PA6", "red", [ "v0" ] ],
+    [ "keypad1:R2", "nucleo:PA7", "violet", [ "v0" ] ],
+    [ "nucleo:PC7", "keypad1:R1", "gold", [ "h0" ] ],
+    [ "keypad1:C3", "nucleo:A2", "cyan", [ "v0" ] ],
+    [ "nucleo:D2", "servo1:PWM", "green", [ "h-2.35", "v86.4" ] ],
+    [ "servo1:V+", "nucleo:5V.2", "red", [ "h0" ] ],
+    [ "lcd1:VCC", "nucleo:3V3.2", "red", [ "h0" ] ],
+    [ "lcd1:SDA", "nucleo:D14", "gold", [ "h0" ] ],
+    [ "lcd1:SCL", "nucleo:D15", "cyan", [ "h-163.2", "v-38.1" ] ]
+  ],
+  "dependencies": {}
+}
